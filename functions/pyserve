@@ -1,0 +1,23 @@
+#
+# Serves current folder over HTTP using python SimpleHTTPServer
+#
+# Authors:
+#   Saneef Ansari <hello@saneef.com>
+#
+
+function pyserve {
+  url_base="http://localhost"
+  port="8000"
+
+  if [ -n "$1" ];then # Is argument is not zero length?
+    port=$1
+  fi
+
+  url="$url_base:$port"
+  echo "Opening $url…"
+  open "$url"
+
+  python -m SimpleHTTPServer $1
+}
+
+pyserve "$@"
